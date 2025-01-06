@@ -29,13 +29,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="1" />
 
-    <!-- Roll Dice button -->
+    <!-- Win message TextView (Initially Hidden) -->
+    <TextView
+        android:id="@+id/winMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/dice2TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="🎉 You Win! 🎉" />
+
+    <!-- Roll Dice Button -->
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/roll"
-        app:layout_constraintTop_toBottomOf="@id/dice2TextView"
+        android:text="Roll Dice"
+        app:layout_constraintTop_toBottomOf="@id/winMessageTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

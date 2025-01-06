@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * This activity allows the user to roll two dice and view the results on the screen.
+ * This activity allows the user to roll two dice and view the results.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Roll two dice and update the screen with the results.
+     * Rolls two dice and updates the screen with the results.
      */
     private fun rollDice() {
-        // Create new Dice objects with 6 sides and roll them
+        // Create two dice with 6 sides
         val dice1 = Dice(6)
         val dice2 = Dice(6)
 
@@ -38,18 +38,27 @@ class MainActivity : AppCompatActivity() {
         // Update the screen with the dice rolls
         val dice1TextView: TextView = findViewById(R.id.dice1TextView)
         val dice2TextView: TextView = findViewById(R.id.dice2TextView)
+        val winMessageTextView: TextView = findViewById(R.id.winMessageTextView)
 
         dice1TextView.text = dice1Roll.toString()
         dice2TextView.text = dice2Roll.toString()
+
+        // Check if both dice have the same number (player wins)
+        if (dice1Roll == dice2Roll) {
+            winMessageTextView.text = "🎉 You Win! 🎉"
+            winMessageTextView.visibility = TextView.VISIBLE
+        } else {
+            winMessageTextView.visibility = TextView.GONE
+        }
     }
 }
 
 /**
- * Dice with a fixed number of sides.
+ * Dice class representing a die with a fixed number of sides.
  */
 class Dice(private val numSides: Int) {
     /**
-     * Do a random dice roll and return the result.
+     * Rolls the die and returns a random number between 1 and numSides.
      */
     fun roll(): Int {
         return (1..numSides).random()
