@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"/>
 
-    <!-- TextView to display the first dice roll result -->
+    <!-- First dice -->
     <TextView
         android:id="@+id/dice1TextView"
         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
         android:layout_marginTop="20dp"
         tools:text="1" />
 
-    <!-- TextView to display the second dice roll result -->
+    <!-- Second dice -->
     <TextView
         android:id="@+id/dice2TextView"
         android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="1" />
 
-    <!-- TextView to display win/lose message -->
+    <!-- Win message -->
     <TextView
         android:id="@+id/winMessageTextView"
         android:layout_width="wrap_content"
@@ -79,17 +79,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="🎉 You Win! 🎉" />
-
-    <!-- Roll Dice Button (Initially Disabled) -->
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Roll Dice"
-        android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@id/winMessageTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

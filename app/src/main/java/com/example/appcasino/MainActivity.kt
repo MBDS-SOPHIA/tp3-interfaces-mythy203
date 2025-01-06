@@ -1,7 +1,7 @@
 package com.example.appcasino
 
 import android.os.Bundle
-import android.widget.Button
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.slider.Slider
@@ -18,22 +18,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Find UI elements
-        val rollButton: Button = findViewById(R.id.button)
         val targetNumberSlider: Slider = findViewById(R.id.targetNumberSlider)
         val targetNumberTextView: TextView = findViewById(R.id.targetNumberTextView)
-
-        // Disable the roll button initially
-        rollButton.isEnabled = false
 
         // Listen for changes on the slider
         targetNumberSlider.addOnChangeListener { _, value, _ ->
             targetNumber = value.toInt()
             targetNumberTextView.text = "Target number: $targetNumber"
-            rollButton.isEnabled = true // Enable the button once a number is selected
+            rollDice()  // Automatically roll dice when user selects a number
         }
-
-        // Set click listener for the roll button
-        rollButton.setOnClickListener { rollDice() }
     }
 
     /**
@@ -55,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         dice1TextView.text = dice1Roll.toString()
         dice2TextView.text = dice2Roll.toString()
 
+        // Animate dice
+        animateDice(dice1TextView)
+        animateDice(dice2TextView)
+
         // Check if the user wins
         if (total == targetNumber) {
             winMessageTextView.text = "🎉 You Win! 🎉"
@@ -63,6 +60,14 @@ class MainActivity : AppCompatActivity() {
             winMessageTextView.text = "❌ You Lose! Try Again."
             winMessageTextView.visibility = TextView.VISIBLE
         }
+    }
+
+    /**
+     * Applies animation to the dice when rolled.
+     */
+    private fun animateDice(diceTextView: TextView) {
+        val shakeAnimation = AnimationUtils.loadAnimation(this, R.anim.shake)
+        diceTextView.startAnimation(shakeAnimation)
     }
 }
 
