@@ -7,18 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- TextView for the first die -->
+    <!-- Label for selecting the target number -->
+    <TextView
+        android:id="@+id/targetLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a target number (2 - 12):"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Slider for choosing the target number -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/targetNumberSlider"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:valueFrom="2"
+        android:valueTo="12"
+        android:stepSize="1"
+        app:layout_constraintTop_toBottomOf="@id/targetLabelTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <!-- TextView to display the selected target number -->
+    <TextView
+        android:id="@+id/targetNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:text="Target number: 2"
+        app:layout_constraintTop_toBottomOf="@id/targetNumberSlider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <!-- TextView to display the first dice roll result -->
     <TextView
         android:id="@+id/dice1TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/targetNumberTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
         tools:text="1" />
 
-    <!-- TextView for the second die -->
+    <!-- TextView to display the second dice roll result -->
     <TextView
         android:id="@+id/dice2TextView"
         android:layout_width="wrap_content"
@@ -29,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="1" />
 
-    <!-- Win message TextView (Initially Hidden) -->
+    <!-- TextView to display win/lose message -->
     <TextView
         android:id="@+id/winMessageTextView"
         android:layout_width="wrap_content"
@@ -42,14 +80,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="🎉 You Win! 🎉" />
 
-    <!-- Roll Dice Button -->
+    <!-- Roll Dice Button (Initially Disabled) -->
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Roll Dice"
+        android:enabled="false"
         app:layout_constraintTop_toBottomOf="@id/winMessageTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
